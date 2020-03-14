@@ -1,0 +1,22 @@
+[
+	{ "id" : "1", "parent" : "#", "text" : "Simple root node" },
+
+	{ "id" : "2", "parent" : "#", "text" : "Root node 2" },
+
+	{ "id" : "3", "parent" : "#", "text" : "Child 1" },
+
+	{ "id" : "4", "parent" : "#", "text" : "Child 2" }
+
+]
+
+
+/*[
+	{"id":"1","parent":"0","text":"aa"},
+
+	{"id":"2","parent":"0","text":"bb"},
+
+	{"id":"3","parent":"0","text":"cc"},
+
+	{"id":"4","parent":"0","text":"dd"}
+
+]*/
