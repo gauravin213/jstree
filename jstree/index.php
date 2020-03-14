@@ -3,21 +3,19 @@
 <head>
 	<title>js tree</title>
 
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
 
-	<link rel="stylesheet" href="dist/themes/default/style.min.css" />
-
+	<!-- <link rel="stylesheet" href="dist/themes/default/style.min.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 	<script src="dist/jstree.min.js"></script> -->
 
 
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/dist/themes/proton/style.css" />
     <link rel="stylesheet" href="assets/docs.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!--[if lt IE 9]><script src="./assets/respond.js"></script><![endif]-->
+
 
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon-precomposed" href="./assets/apple-touch-icon-precomposed.png" />
@@ -45,6 +43,7 @@
 <script type="text/javascript">
 
 var catejstree = $('#jstree_demo');
+
 
 catejstree.jstree({
   'core' : {
@@ -89,7 +88,7 @@ catejstree.jstree({
   "dnd",
   "massload",
   "search",
-  "sort",
+  //"sort",
   "state",
   "types",
   "unique",
@@ -100,7 +99,27 @@ catejstree.jstree({
 });
 
 catejstree.bind("move_node.jstree", function(e, data) {
+
    console.log("Drop node " + data.node.id + " to " + data.parent);
+
+   var parent_node = data.parent;
+
+   var child_node = data.node.id;
+
+   jQuery.ajax({
+        url: 'response_update.php',
+        type: "POST",
+        data: {parent_node: parent_node, child_node: child_node},
+        cache: false,
+        dataType: 'json',
+        beforeSend: function(){
+        },
+        complete: function(){
+        },
+        success: function (response) {  console.log(response);
+        }
+    });
+
 });
 
 
